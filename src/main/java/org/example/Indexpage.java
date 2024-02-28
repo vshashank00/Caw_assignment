@@ -39,7 +39,7 @@ public class Indexpage {
        for (int i=0;i<list.size();i++){
            String arr[]=list.get(i).getText().split(" ");
            Assert.assertTrue(arr[0].equalsIgnoreCase(hashMapList.get(i).get("name")) && arr[1].equalsIgnoreCase(hashMapList.get(i).get("age")) && arr[2].equalsIgnoreCase(hashMapList.get(i).get("gender")));
-           System.out.println("verifiocation done for row:" + i + " " + hashMapList.get(i));
+           System.out.println("verifiocation done for row:" + (i+1) + " " + hashMapList.get(i));
 
        }
     }
