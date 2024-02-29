@@ -12,13 +12,14 @@ import java.util.List;
 
 public class Indexpage {
     WebDriver driver;
-    String table_xpath="//table[@id='dynamictable']/child::tr";
+    String table_xpath = "//table[@id='dynamictable']/child::tr";
     @FindBy(xpath = "//details/child::summary")
     WebElement table_data_button;
     @FindBy(xpath = "//textarea[@id='jsondata']")
     WebElement textbox;
     @FindBy(xpath = "//button[@id='refreshtable']")
     WebElement refresh_button;
+
     public Indexpage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -34,13 +35,14 @@ public class Indexpage {
     }
 
     void verify_feed_data(List<HashMap<String, String>> hashMapList) {
-       List <WebElement> list= driver.findElements(By.xpath(table_xpath));
-       list.remove(0);
-       for (int i=0;i<list.size();i++){
-           String arr[]=list.get(i).getText().split(" ");
-           Assert.assertTrue(arr[0].equalsIgnoreCase(hashMapList.get(i).get("name")) && arr[1].equalsIgnoreCase(hashMapList.get(i).get("age")) && arr[2].equalsIgnoreCase(hashMapList.get(i).get("gender")));
-           System.out.println("verification done for row:" + (i+1) + " " + hashMapList.get(i));
+        List<WebElement> list = driver.findElements(By.xpath(table_xpath));
+        list.remove(0);
+        for (int i = 0; i < list.size(); i++) {
+            String arr[] = list.get(i).getText().split(" ");
+            Assert.assertTrue(arr[0].equalsIgnoreCase(hashMapList.get(i).get("name")) && arr[1].equalsIgnoreCase(hashMapList.get(i).get("age")) && arr[2].equalsIgnoreCase(hashMapList.get(i).get("gender")));
+            System.out.println("verification done for row:" + (i + 1) + " " + hashMapList.get(i));
+
+        }
 
     }
-
 }
